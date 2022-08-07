@@ -3,7 +3,7 @@ from os import environ
 
 API_TOKEN = environ["TELEGRAM_API_TOKEN"]
 ALERT_RECIEVER_ID = environ["TELEGRAM_ALERT_REC_ID"]
-
+SECRET_CODE = environ["SECRET_CODE"]
 
 bot = telebot.TeleBot(API_TOKEN)
 
@@ -17,7 +17,8 @@ def start_message(message):
 def ping_me(message):
     code = message.text
     code = code.strip("/ping ")
-    bot.send_message(ALERT_RECIEVER_ID, "U have got  an alert from  {}".format(message.chat.id))
+    if code == SECRET_CODE:
+        bot.send_message(ALERT_RECIEVER_ID, "U have got  an alert from  {}".format(message.chat.id))
     
 
 
