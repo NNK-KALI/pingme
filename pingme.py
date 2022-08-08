@@ -17,10 +17,10 @@ def start_message(message):
 def ping_me(message):
     code = message.text
     code = code.strip("/ping ")
+    code = code.strip()
     if code == SECRET_CODE:
         bot.send_message(ALERT_RECIEVER_ID, "U have got  an alert from  {}({}).".format(message.chat.id, message.chat.username))
-    
-
+        print("Encountered an alert from {} .".format(message.chat.id))
 
 
 
